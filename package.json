@@ -1,0 +1,21 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "flash": "^1.1.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.2",
+    "passport": "^0.4.0",
+    "passport-kakao": "^0.0.5",
+    "passport-local": "^1.0.0"
+  }
+}
