@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 const users = require('./users');
-const tests = require('./tests');
 
 router.use('/users', users)
-router.use('/tests', tests)
 
+router.get('/', (req, res) => {
+    res.render("test.html")
+})
 
 module.exports = router;

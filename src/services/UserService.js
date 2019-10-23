@@ -1,8 +1,11 @@
 const mysql = require('mysql');
 const connector = require('../models/connertor')
 const pool = mysql.createPool(connector);
+const fs = require('fs');
 
-const createUser = (req, res) => {
+const multer = require('multer');
+
+const createNormalUser = (req, res) => {
     let userId = req.body.userid;
     let name = req.body.name;
     let password = req.body.password;
@@ -15,10 +18,26 @@ const createUser = (req, res) => {
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
-            res.json({ result: "false" })
+            res.json({ result: "fail" })
         }
     })
 
+}
+
+
+const createClubUser = (req, res) =>{
+    console.log(req.file)
+    console.log(req.file.path)
+    let sql = `insert into tests (testdata) values(?)`;
+    pool.query(sql, [req.file.path], function(err, rows){
+        if(!err){
+            console.log("성공!!!")
+            res.json({ result: "wow" })
+        }else{
+            res.json({ result: "fail"})
+        }
+        
+    })
 }
 
 const readUsers = (req, res) => {
@@ -27,13 +46,14 @@ const readUsers = (req, res) => {
         if (!err) {
             res.json({ result: rows })
         } else {
-            res.json({ result: "false" })
+            res.json({ result: "fail" })
         }
     })
 }
 
 
 module.exports = {
-    createUser,
+    createNormalUser,
+    createClubUser,
     readUsers
 }
