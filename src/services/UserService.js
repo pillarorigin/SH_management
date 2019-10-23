@@ -1,19 +1,39 @@
-const UserRepository = require('../database/repositories/UserRepository')
-const User = require('../models/User')
+const mysql = require('mysql');
+const connector = require('../models/connertor')
+const pool = mysql.createPool(connector);
 
-class UserService{
-    constructor(){
-        this.userRepository = new UserRepository();
-    }
+const createUser = (req, res) => {
+    let userId = req.body.userid;
+    let name = req.body.name;
+    let password = req.body.password;
+    let role = "normal";
+    let date = new Date();
+    let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
+    pool.query(sql, [userId, name, password, role, date], function (err, rows) {
+        if (!err) {
 
+            res.json({ result: "success" })
+        } else {
+            console.log("error case1", err);
+            res.json({ result: "false" })
+        }
+    })
 
-    find(){
-        const usersData = this.userRepository.find();
-        console.log("userData !!@!@!@!@@ ", usersData )
-        console.log("211312124", typeof(usersData))
-        
-        return usersData;
-    }
 }
 
-module.exports = UserService;
+const readUsers = (req, res) => {
+    let sql = `select * from users`;
+    pool.query(sql, function (err, rows) {
+        if (!err) {
+            res.json({ result: rows })
+        } else {
+            res.json({ result: "false" })
+        }
+    })
+}
+
+
+module.exports = {
+    createUser,
+    readUsers
+}

@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
 app = express();
 
 app.use(bodyParser.urlencoded({
