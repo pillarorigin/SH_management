@@ -24,9 +24,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage});
 
 router.get('', UserService.readUsers)
+router.get('/logout', UserService.logoutUser)
 router.post('', UserService.createNormalUser)
 router.post('/club', upload.single('imageupload'), UserService.createClubUser)
-
+router.post('/login', UserService.loginUser)
 
 
 module.exports = router;

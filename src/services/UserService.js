@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const connector = require('../models/connertor')
 const pool = mysql.createPool(connector);
+const session = require('express-session');
 const fs = require('fs');
 
 const multer = require('multer');
@@ -54,14 +55,38 @@ const readUsers = (req, res) => {
 const loginUser = (req, res) =>{
     let userId = req.body.userid;
     let password = req.body.password;
-    let sql = `select pa(ssword from users where userId=?`
+    let sql = `select password from users where userId=?`
     pool.query(sql, [userId], function(err, rows){
         if(!err){
-            res.json({ result: rows })
+            if(rows.length === 0){
+                res.json({ result: "NoId" })
+            }else if(rows[0].password != password){
+                res.json({ result: "NoPw" })
+            }else{
+                req.session.id = userId;
+                console.log(req.session)
+                res.json({ 
+                    result: "successs",
+                    session: req.session.id
+             })    
+            }
         }else{
+            console.log('에러 케이스2', err)
             res.json({ result: "fail" })
         }
     })
+}
+
+const logoutUser = (req, res)=>{
+    console.log(req.session);
+    req.session.destroy(function(err){
+        if(err){
+            res.json({ result : "faile" })
+        }else{
+            res.json({ result: "logout" })
+        }
+    })
+    
 }
 
 
@@ -69,5 +94,6 @@ module.exports = {
     createNormalUser,
     createClubUser,
     readUsers,
-    loginUser
+    loginUser,
+    logoutUser
 }
