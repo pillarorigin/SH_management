@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Sign extends Component {
     state={
         name:'',
-        email:'',
+        userid:'',
         password:''
     }
     handleChange = (e) => {
@@ -12,8 +13,19 @@ export default class Sign extends Component {
        })
     }
     handleClick = () =>{
+        alert("name"+this.state.name+ "userid"+this.state.userid+"password"+this.state.password)
         console.log("click",this.state)
-        
+        axios.post('http://localhost:4000/users',{
+            name: this.state.name,
+            userId : this. state.userid,
+            password : this.state.userid
+        })
+        .then ((response)=>{
+            console.log("요청함",response);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
     }
     render() {
         return (
@@ -26,10 +38,10 @@ export default class Sign extends Component {
                     onChange={this.handleChange}
                     name = 'name'
                     />
-                    <input placeholder="email"
-                    value = {this.state.email}
+                    <input placeholder="userid"
+                    value = {this.state.userid}
                     onChange={this.handleChange}
-                    name = 'email'
+                    name = 'userid'
                     />
                     <input placeholder="password"
                     passwvalueord = {this.state.password}
@@ -38,7 +50,7 @@ export default class Sign extends Component {
                     />
                     
                     <div>{this.state.name}</div>
-                    <div>{this.state.email}</div>
+                    <div>{this.state.userid}</div>
                     <div>{this.state.password}</div>
                 </form>
                 <button onClick = {this.handleClick}>
