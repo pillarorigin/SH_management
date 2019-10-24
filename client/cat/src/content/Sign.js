@@ -23,6 +23,9 @@ export default class Sign extends Component {
         .then ((response)=>{
             console.log("요청함",response);
         })
+        .catch((error)=>{
+            console.log(error);
+        })
     }
     render() {
         return (

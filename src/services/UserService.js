@@ -6,13 +6,17 @@ const fs = require('fs');
 const multer = require('multer');
 
 const createNormalUser = (req, res) => {
-    let userId = req.body.userid;
+    let userId = req.body.userId;
     let name = req.body.name;
     let password = req.body.password;
     let role = "normal";
     let date = new Date();
     let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
+        if(userId === '10'){
+            res.json({ result: "fail" })
+        }
+        
         if (!err) {
 
             res.json({ result: "success" })
