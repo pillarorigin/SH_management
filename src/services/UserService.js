@@ -51,9 +51,23 @@ const readUsers = (req, res) => {
     })
 }
 
+const loginUser = (req, res) =>{
+    let userId = req.body.userid;
+    let password = req.body.password;
+    let sql = `select pa(ssword from users where userId=?`
+    pool.query(sql, [userId], function(err, rows){
+        if(!err){
+            res.json({ result: rows })
+        }else{
+            res.json({ result: "fail" })
+        }
+    })
+}
+
 
 module.exports = {
     createNormalUser,
     createClubUser,
-    readUsers
+    readUsers,
+    loginUser
 }
