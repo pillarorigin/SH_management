@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const connector = require('../models/connertor')
+const connector = require('../models/connector')
 const pool = mysql.createPool(connector);
 const session = require('express-session');
 const fs = require('fs');
@@ -14,12 +14,7 @@ const createNormalUser = (req, res) => {
     let date = new Date();
     let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
-        if(userId === '10'){
-            res.json({ result: "fail" })
-        }
-        
         if (!err) {
-
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
@@ -49,8 +44,12 @@ const readUsers = (req, res) => {
     let sql = `select * from users`;
     pool.query(sql, function (err, rows) {
         if (!err) {
-            res.json({ result: rows })
+            res.json({
+                data: rows,
+                result: "success"
+            })
         } else {
+            console.log(err);
             res.json({ result: "fail" })
         }
     })
@@ -59,6 +58,8 @@ const readUsers = (req, res) => {
 const loginUser = (req, res) =>{
     let userId = req.body.userid;
     let password = req.body.password;
+    // 암호화 
+
     let sql = `select password from users where userId=?`
     pool.query(sql, [userId], function(err, rows){
         if(!err){
@@ -68,7 +69,8 @@ const loginUser = (req, res) =>{
                 res.json({ result: "NoPw" })
             }else{
                 req.session.id = userId;
-                console.log(req.session)
+                console.log(req.session);
+                console.log(req.session.id);
                 res.json({ 
                     result: "successs",
                     session: req.session.id
@@ -83,9 +85,10 @@ const loginUser = (req, res) =>{
 
 const logoutUser = (req, res)=>{
     console.log(req.session);
+    console.log(req.session.id);
     req.session.destroy(function(err){
         if(err){
-            res.json({ result : "faile" })
+            res.json({ result : "fail" })
         }else{
             res.json({ result: "logout" })
         }
