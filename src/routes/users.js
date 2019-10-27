@@ -26,7 +26,7 @@ const upload = multer({ storage: storage});
 router.get('', UserService.readUsers)
 router.post('', UserService.createNormalUser)
 router.post('/club', upload.single('imageupload'), UserService.createClubUser)
-
+router.post('/register', upload.single('images') ,UserService.createGroupUser);
 
 
 module.exports = router;
