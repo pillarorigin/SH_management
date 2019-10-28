@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+
 export default class Login extends Component {
-    Sign=()=>{
-        window.location.assign('/sign')
+    login = ()=>{
+        axios
     }
+
     render() {
         return (
             <div>
@@ -11,7 +14,7 @@ export default class Login extends Component {
                 <form>
                     <input placeholder="아이디" type="text"/>
                     <input placeholder="비밀번호" type="password" />
-                    <button>로그인</button>
+                    <button onClilck={login}>로그인</button>
                     <button><Link to ='/sign'>회원가입</Link></button>
                 </form>
             </div>
