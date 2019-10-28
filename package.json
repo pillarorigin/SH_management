@@ -6,7 +6,7 @@
   "author": "dongwon <lemontech119@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd src & node index.js"
+    "start": "cd src & nodemon index.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -14,9 +14,12 @@
     "cors": "^2.8.5",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "multer": "^1.4.2",
     "mysql": "^2.17.1",
     "mysql2": "^1.7.0",
-    "route-async": "^1.0.5"
+    "nodemon": "^1.19.4",
+    "route-async": "^1.0.5",
+    "session-file-store": "^1.3.1"
   }
 }
