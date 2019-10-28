@@ -1,0 +1,15 @@
+#group,#normal{
+    background-color: #fff;
+    border: 1px solid #008CBA;
+    padding: 5px;
+    margin:1px;
+    border-radius: 4px;
+    font-size: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#group:hover, #normal:hover{
+    background-color: #009CBA;
+    color: white;
+}

@@ -1,62 +1,59 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import NormalSign from './NormalSign';
+import GroupSign from './GroupSign';
+import './Sign.css';
 
 export default class Sign extends Component {
     state={
-        name:'',
-        userid:'',
-        password:''
+        isLoggedIn:''
     }
-    handleChange = (e) => {
-       this.setState({
-         [e.target.name]: e.target.value
-       })
+    NormalSign = ()=>{
+       if(this.normal.value =="normal"){
+        // console.log(this.normal.value)
+         this.setState({
+            isLoggedIn:'normal'
+         });
+       }
+      
     }
-    handleClick = () =>{
-        alert("name"+this.state.name+ "userid"+this.state.userid+"password"+this.state.password)
-        console.log("click",this.state)
-        axios.post('http://localhost:4000/users',{
-            name: this.state.name,
-            userId : this. state.userid,
-            password : this.state.userid
-        })
-        .then ((response)=>{
-            console.log("요청함",response);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+    GroupSign = () =>{
+        if(this.group.value =="group"){
+            // console.log(this.group.value)
+            this.setState({
+                isLoggedIn:'group'
+            });
+        }
+        // console.log(this.state)
     }
     render() {
+        
+        const isLoggedIn = this.state.isLoggedIn;
+
+        let page = null;
+        if (isLoggedIn =="normal") {
+          page= <NormalSign  />
+          document.getElementById('normal').style.display = "none";
+          document.getElementById('group').innerText = "그룹 회원 가입";
+          document.getElementById('group').style.display = "inline-block";
+        }
+        if(isLoggedIn=="group") {
+          page=<GroupSign />
+          document.getElementById('normal').innerText = "일반 회원 가입";
+          document.getElementById('group').style.display = "none";
+          document.getElementById('normal').style.display = "inline-block";
+
+        }
         return (
-            
             <div>
                 <h1>회원가입</h1>
-                <form >
-                    <input placeholder="name"
-                    value ={this.state.name}
-                    onChange={this.handleChange}
-                    name = 'name'
-                    />
-                    <input placeholder="userid"
-                    value = {this.state.userid}
-                    onChange={this.handleChange}
-                    name = 'userid'
-                    />
-                    <input placeholder="password"
-                    passwvalueord = {this.state.password}
-                    onChange={this.handleChange}
-                    name = 'password'
-                    />
-                    
-                    <div>{this.state.name}</div>
-                    <div>{this.state.userid}</div>
-                    <div>{this.state.password}</div>
-                </form>
-                <button onClick = {this.handleClick}>
-                        Click
-                    </button>
+                <button id="normal" onClick={this.NormalSign} ref={ref=>this.normal=ref} value='normal'>일반</button>
+                <button id="group" onClick={this.GroupSign} ref={ref=>this.group=ref} value='group'>그룹</button>
+    
+                {page}
+                
             </div>
         )
     }
 }
+
+// 10/24 현재  에러남 그거 고쳐야함

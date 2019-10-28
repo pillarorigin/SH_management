@@ -1,7 +1,6 @@
 const mysql = require('mysql');
 const connector = require('../models/connector')
 const pool = mysql.createPool(connector);
-const session = require('express-session');
 const fs = require('fs');
 
 const multer = require('multer');
@@ -14,7 +13,9 @@ const createNormalUser = (req, res) => {
     let date = new Date();
     let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
+       
         if (!err) {
+
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
@@ -44,12 +45,8 @@ const readUsers = (req, res) => {
     let sql = `select * from users`;
     pool.query(sql, function (err, rows) {
         if (!err) {
-            res.json({
-                data: rows,
-                result: "success"
-            })
+            res.json({ result: rows })
         } else {
-            console.log(err);
             res.json({ result: "fail" })
         }
     })
@@ -58,11 +55,10 @@ const readUsers = (req, res) => {
 const loginUser = (req, res) =>{
     let userId = req.body.userid;
     let password = req.body.password;
-    // 암호화 
-
-    let sql = `select password from users where userId=?`
+    let sql = `select pa(ssword from users where userId=?`
     pool.query(sql, [userId], function(err, rows){
         if(!err){
+
             if(rows.length === 0){
                 res.json({ result: "NoId" })
             }else if(rows[0].password != password){
@@ -77,7 +73,6 @@ const loginUser = (req, res) =>{
              })
             }
         }else{
-            console.log('에러 케이스2', err)
             res.json({ result: "fail" })
         }
     })
@@ -85,15 +80,14 @@ const loginUser = (req, res) =>{
 
 const logoutUser = (req, res)=>{
     console.log(req.session);
-    console.log(req.session.id);
     req.session.destroy(function(err){
         if(err){
-            res.json({ result : "fail" })
+            res.json({ result : "faile" })
         }else{
             res.json({ result: "logout" })
         }
     })
-    
+
 }
 
 
