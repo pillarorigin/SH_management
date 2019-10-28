@@ -60,10 +60,6 @@ export default class NormalSign extends Component {
             onChange={this.handleChange}
             name = 'password'
             />
-            
-            <div>{this.state.name}</div>
-            <div>{this.state.userid}</div>
-            <div>{this.state.password}</div>
         </form>
         <button onClick = {this.handleClick}>
                 회원가입
