@@ -73,8 +73,8 @@ const loginUser = (req, res) =>{
                 console.log(req.session.id);
                 res.json({ 
                     result: "successs",
-                    session: req.session.id
-             })    
+                    session: userId
+             })
             }
         }else{
             console.log('에러 케이스2', err)
