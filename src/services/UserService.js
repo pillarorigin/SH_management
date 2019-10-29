@@ -14,7 +14,6 @@ const createNormalUser = (req, res) => {
     let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
         if (!err) {
-
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
