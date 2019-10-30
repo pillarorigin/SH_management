@@ -68,7 +68,7 @@ const loginUser = (req, res) =>{
                 console.log(req.session);
                 console.log(req.session.id);
                 res.json({ 
-                    result: "successs",
+                    result: "success",
                     session: userId
              })
             }
