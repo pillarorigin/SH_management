@@ -69,7 +69,10 @@ const createGroupUser = (req, res) => {
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
-
+            res.json({ result: "fail" })
+        }
+    })
+}
           
 const loginUser = (req, res) =>{
     let userId = req.body.userId;
