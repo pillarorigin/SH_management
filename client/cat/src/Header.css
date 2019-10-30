@@ -1,3 +1,9 @@
+.head-button{
+    border-style: none;
+    
+}
+
+
 .head-link{
     margin: 5px;
     background-color: #fff;
@@ -9,6 +15,7 @@
     transition: background-color 0.4s;
     font-size: 20px;
     font-weight: 10px;
+    
 }
 
 .head-link:hover{
