@@ -4,4 +4,5 @@ module.exports = {
     password : '124578',
     port : 3306,
     database : 'sh_manage'
+
 };
