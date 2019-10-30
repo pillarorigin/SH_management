@@ -28,8 +28,12 @@ const createNormalUser = (req, res) => {
 const createClubUser = (req, res) =>{
     console.log(req.file)
     console.log(req.file.path)
+    let filePath = req.file.path;
+    filePath = filePath.substring(7);
+    console.log(filePath)
+    filePath = "localhost:4000/" + filePath
     let sql = `insert into tests (testdata) values(?)`;
-    pool.query(sql, [req.file.path], function(err, rows){
+    pool.query(sql, [filePath], function(err, rows){
         if(!err){
             console.log("성공!!!")
             res.json({ result: "wow" })
@@ -51,20 +55,37 @@ const readUsers = (req, res) => {
     })
 }
 
+const readUser = (req, res) =>{
+    let userId = req.params.userId;
+    let sql = `select * from users where userid = ?`
+
+    pool.query(sql, [userId], function(err, rows){
+        if(!err){
+            res.json({ result: rows })
+        }else{
+            console.log(err);
+            res.json({ result: "fail" })
+        }
+    })
+    
+
+}
 
 const createGroupUser = (req, res) => {
-    let groupId = req.body.groupId;
-    let pw = req.body.pw;
-    let groupName = req.body.groupName;
+    let userId = req.body.userId;
+    let name = req.body.name;
+    let password = req.body.password;
     let slogan = req.body.slogan;
     let detail = req.body.detail;
     let accountNumber = req.body.accountNumber;
     let imgPath = req.file.path;
+    let filePath = imgPath.substring(7);
+    filePath = "localhost:4000/" + filePath
     let role = "group";
     let date = new Date();
 
-    let sql = `insert into groupUsers (groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`
-    pool.query(sql, [groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date ], function (err, rows) {
+    let sql = `insert into users (userId, name, password, slogan, detail, imgPath, accountNumber, role, date ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`
+    pool.query(sql, [userId, name, password, slogan, detail, filePath, accountNumber, role, date ], function (err, rows) {
         if (!err) {
             res.json({ result: "success" })
         } else {
@@ -119,6 +140,7 @@ module.exports = {
     createNormalUser,
     createClubUser,
     readUsers,
+    readUser,
     createGroupUser,
     loginUser,
     logoutUser
