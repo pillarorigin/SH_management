@@ -30,6 +30,7 @@ export default class Sign extends Component {
         const isLoggedIn = this.state.isLoggedIn;
 
         let page = null;
+       
         if (isLoggedIn ==="normal") {
           page= <NormalSign  />
           document.getElementById('normal').style.display = "none";

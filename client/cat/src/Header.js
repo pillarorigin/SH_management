@@ -20,7 +20,7 @@ class Header extends Component {
                         <Link className="head-link" to='/'>Home</Link>
                         <Link className="head-link" to='/info'>Info</Link>
                         <Link className="head-link" to='/donation'>Donation</Link>
-                        <Link className="head-link" to='/login'>MyPage</Link>
+                        <Link className="head-link" to='/mypage'>MyPage</Link>
                         <button className="head-link head-button" onClick={this.logout}>Logout</button>
                     </div>
                 </div>

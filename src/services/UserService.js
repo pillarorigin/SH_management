@@ -110,6 +110,7 @@ const loginUser = (req, res) =>{
                 req.session.id = userId;
                 console.log(req.session);
                 console.log(req.session.id);
+                console.log('Is 마포대교 fallen?')
                 res.json({ 
                     result: "success",
                     session: userId

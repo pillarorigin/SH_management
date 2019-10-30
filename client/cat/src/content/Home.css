@@ -6,3 +6,9 @@
     height: 500px !important;
     margin-top: 1px;
 }
+.BrainhubCarousel__arrows{
+    background-color:#000;
+}
+.BrainhubCarousel__arrows:hover{
+    background-color:#000;
+}
