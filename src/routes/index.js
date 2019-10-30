@@ -9,5 +9,4 @@ router.use('/promotion', promotion)
 router.get('/', (req, res) => {
     res.render("test.html")
 })
-
 module.exports = router;
