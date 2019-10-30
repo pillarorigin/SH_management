@@ -1,0 +1,22 @@
+.head-link{
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.4s;
+    font-size: 20px;
+    font-weight: 10px;
+}
+
+.head-link:hover{
+    color:black;
+    background-color: #008CBA;
+    text-decoration: none;
+}
+
+.head-div{
+    background-color: #008CBA;
+}

@@ -1,18 +1,19 @@
 const mysql = require('mysql');
-const connector = require('../models/connertor')
+const connector = require('../models/connector')
 const pool = mysql.createPool(connector);
 const fs = require('fs');
 
 const multer = require('multer');
 
 const createNormalUser = (req, res) => {
-    let userId = req.body.userid;
+    let userId = req.body.userId;
     let name = req.body.name;
     let password = req.body.password;
     let role = "normal";
     let date = new Date();
     let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
+       
         if (!err) {
             res.json({ result: "success" })
         } else {
@@ -50,6 +51,7 @@ const readUsers = (req, res) => {
     })
 }
 
+
 const createGroupUser = (req, res) => {
     let groupId = req.body.groupId;
     let pw = req.body.pw;
@@ -67,14 +69,54 @@ const createGroupUser = (req, res) => {
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
+
+          
+const loginUser = (req, res) =>{
+    let userId = req.body.userId;
+    let password = req.body.password;
+    let sql = `select password from users where userId=?`
+    pool.query(sql, [userId], function(err, rows){
+        if(!err){
+
+            if(rows.length === 0){
+                res.json({ result: "NoId" })
+            }else if(rows[0].password != password){
+                res.json({ result: "NoPw" })
+            }else{
+                req.session.id = userId;
+                console.log(req.session);
+                console.log(req.session.id);
+                res.json({ 
+                    result: "success",
+                    session: userId
+             })
+            }
+        }else{
             res.json({ result: "fail" })
         }
     })
 }
 
+
+
+const logoutUser = (req, res)=>{
+    console.log(req.session);
+    req.session.destroy(function(err){
+        if(err){
+            res.json({ result : "faile" })
+        }else{
+            res.json({ result: "logout" })
+        }
+    })
+
+}
+
+
 module.exports = {
     createNormalUser,
     createClubUser,
     readUsers,
-    createGroupUser
+    createGroupUser,
+    loginUser,
+    logoutUser
 }

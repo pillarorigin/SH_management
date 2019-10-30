@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const UserService = require('../services/UserService')
 const mysql = require('mysql');
-const connector = require('../models/connertor')
+const connector = require('../models/connector')
 const pool = mysql.createPool(connector);
 const fs = require('fs');
 
@@ -21,12 +21,14 @@ const storage = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storage});
+const upload = multer({ storage: storage });
 
 router.get('', UserService.readUsers)
+router.get('/logout', UserService.logoutUser)
 router.post('', UserService.createNormalUser)
 router.post('/club', upload.single('imageupload'), UserService.createClubUser)
 router.post('/register', upload.single('images') ,UserService.createGroupUser);
+router.post('/login', UserService.loginUser)
 
 
 module.exports = router;
