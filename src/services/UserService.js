@@ -15,7 +15,6 @@ const createNormalUser = (req, res) => {
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
        
         if (!err) {
-
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
@@ -52,6 +51,26 @@ const readUsers = (req, res) => {
     })
 }
 
+
+const createGroupUser = (req, res) => {
+    let groupId = req.body.groupId;
+    let pw = req.body.pw;
+    let groupName = req.body.groupName;
+    let slogan = req.body.slogan;
+    let detail = req.body.detail;
+    let accountNumber = req.body.accountNumber;
+    let imgPath = req.file.path;
+    let role = "group";
+    let date = new Date();
+
+    let sql = `insert into groupUsers (groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`
+    pool.query(sql, [groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date ], function (err, rows) {
+        if (!err) {
+            res.json({ result: "success" })
+        } else {
+            console.log("error case1", err);
+
+          
 const loginUser = (req, res) =>{
     let userId = req.body.userId;
     let password = req.body.password;
@@ -78,6 +97,8 @@ const loginUser = (req, res) =>{
     })
 }
 
+
+
 const logoutUser = (req, res)=>{
     console.log(req.session);
     req.session.destroy(function(err){
@@ -95,6 +116,7 @@ module.exports = {
     createNormalUser,
     createClubUser,
     readUsers,
+    createGroupUser,
     loginUser,
     logoutUser
 }

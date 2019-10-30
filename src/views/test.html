@@ -2,38 +2,53 @@
 <html lang="en">
 
 <head>
-    <title>파일</title>
+    <title><%= title %></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
+                <!-- 
+                    let idx
+                    let title
+                    let writer 
+                    let imgPath
+                    let slogan
+                    let detail
+                    let accountNumber
+                -->
 <body>
+    <h1><%=title %></h1>
+    <table border="2">
+        <tr>
+            <th>글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>이미지</th>
+            <th>슬로건</th>
+            <th>상세설명</th>
+            <th>계좌번호</th>
+        </tr>
+        <%
+      for(var i = 0; i<rows.length; i++)
+      {
+      %>
+        <tr>
+            <td><%=rows[i].idx%></td>
+            <td><%=rows[i].title%></td>
+            <td><%=rows[i].writer%></td>
+            <td><%=rows[i].imgPath%></td>
+            <td><%=rows[i].slogan%></td>
+            <td><%=rows[i].detail%></td>
+            <td><%=rows[i].accountNumber%></td>
+        </tr>
+        <%
+      }
+      %>
 
-    <div class="container">
-        <div class="jumbotron">
-            <h1>파일업로드</h1>
-            <p> </p>
-        </div>
-        <p>.</p>
-        <a href="/main">게시판으로 이동</a>
-    </div>
-
-
-    <br>
-    <br>
-    <div class="container">
-        <form action="/users/club" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="exampleFormControlFile1">파일업로드</label>
-                <input type="file" class="form-control-file" id="imageupload" name="imageupload">
-            </div>
-            <input type="submit" value="올리기">
-        </form>
-    </div>
-
+    </table>
 </body>
+             
 
 </html>

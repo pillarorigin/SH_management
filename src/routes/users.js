@@ -27,6 +27,7 @@ router.get('', UserService.readUsers)
 router.get('/logout', UserService.logoutUser)
 router.post('', UserService.createNormalUser)
 router.post('/club', upload.single('imageupload'), UserService.createClubUser)
+router.post('/register', upload.single('images') ,UserService.createGroupUser);
 router.post('/login', UserService.loginUser)
 
 
