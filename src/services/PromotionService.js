@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const connector = require('../models/connertor')
+const connector = require('../models/connector')
 const pool = mysql.createPool(connector);
 
 
