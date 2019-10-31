@@ -13,7 +13,6 @@ const createNormalUser = (req, res) => {
     let date = new Date();
     let sql = `insert into users (userId, name, password, role, date) values(?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, role, date], function (err, rows) {
-       
         if (!err) {
             res.json({ result: "success" })
         } else {
@@ -21,22 +20,19 @@ const createNormalUser = (req, res) => {
             res.json({ result: "fail" })
         }
     })
-
 }
 
-
-const createClubUser = (req, res) =>{
+const createClubUser = (req, res) => {
     console.log(req.file)
     console.log(req.file.path)
     let sql = `insert into tests (testdata) values(?)`;
-    pool.query(sql, [req.file.path], function(err, rows){
-        if(!err){
+    pool.query(sql, [req.file.path], function (err, rows) {
+        if (!err) {
             console.log("성공!!!")
             res.json({ result: "wow" })
-        }else{
-            res.json({ result: "fail"})
+        } else {
+            res.json({ result: "fail" })
         }
-        
     })
 }
 
@@ -51,7 +47,6 @@ const readUsers = (req, res) => {
     })
 }
 
-
 const createGroupUser = (req, res) => {
     let groupId = req.body.groupId;
     let pw = req.body.pw;
@@ -64,34 +59,36 @@ const createGroupUser = (req, res) => {
     let date = new Date();
 
     let sql = `insert into groupUsers (groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`
-    pool.query(sql, [groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date ], function (err, rows) {
+    pool.query(sql, [groupId, pw, groupName, slogan, detail, imgPath, accountNumber, role, date], function (err, rows) {
         if (!err) {
             res.json({ result: "success" })
         } else {
             console.log("error case1", err);
+        }
+    })
+}
 
-          
-const loginUser = (req, res) =>{
+const loginUser = (req, res) => {
     let userId = req.body.userId;
     let password = req.body.password;
     let sql = `select password from users where userId=?`
-    pool.query(sql, [userId], function(err, rows){
-        if(!err){
+    pool.query(sql, [userId], function (err, rows) {
+        if (!err) {
 
-            if(rows.length === 0){
+            if (rows.length === 0) {
                 res.json({ result: "NoId" })
-            }else if(rows[0].password != password){
+            } else if (rows[0].password != password) {
                 res.json({ result: "NoPw" })
-            }else{
+            } else {
                 req.session.id = userId;
                 console.log(req.session);
                 console.log(req.session.id);
-                res.json({ 
+                res.json({
                     result: "success",
                     session: userId
-             })
+                })
             }
-        }else{
+        } else {
             res.json({ result: "fail" })
         }
     })
@@ -99,12 +96,12 @@ const loginUser = (req, res) =>{
 
 
 
-const logoutUser = (req, res)=>{
+const logoutUser = (req, res) => {
     console.log(req.session);
-    req.session.destroy(function(err){
-        if(err){
-            res.json({ result : "faile" })
-        }else{
+    req.session.destroy(function (err) {
+        if (err) {
+            res.json({ result: "faile" })
+        } else {
             res.json({ result: "logout" })
         }
     })
