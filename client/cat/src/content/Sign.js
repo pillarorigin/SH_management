@@ -8,7 +8,7 @@ export default class Sign extends Component {
         isLoggedIn:''
     }
     NormalSign = ()=>{
-       if(this.normal.value =="normal"){
+       if(this.normal.value ==="normal"){
         // console.log(this.normal.value)
          this.setState({
             isLoggedIn:'normal'
@@ -17,7 +17,7 @@ export default class Sign extends Component {
       
     }
     GroupSign = () =>{
-        if(this.group.value =="group"){
+        if(this.group.value ==="group"){
             // console.log(this.group.value)
             this.setState({
                 isLoggedIn:'group'
@@ -30,13 +30,14 @@ export default class Sign extends Component {
         const isLoggedIn = this.state.isLoggedIn;
 
         let page = null;
-        if (isLoggedIn =="normal") {
+       
+        if (isLoggedIn ==="normal") {
           page= <NormalSign  />
           document.getElementById('normal').style.display = "none";
           document.getElementById('group').innerText = "그룹 회원 가입";
           document.getElementById('group').style.display = "inline-block";
         }
-        if(isLoggedIn=="group") {
+        if(isLoggedIn==="group") {
           page=<GroupSign />
           document.getElementById('normal').innerText = "일반 회원 가입";
           document.getElementById('group').style.display = "none";

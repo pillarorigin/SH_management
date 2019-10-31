@@ -12,8 +12,6 @@ class Header extends Component {
         this.props.history.push('/');
     }
     menuset = () => {
-        let loginInfo = JSON.parse(localStorage.getItem('userId'));
-        let name = loginInfo
         if (localStorage.getItem('userId')) {
 
             return (
@@ -22,8 +20,8 @@ class Header extends Component {
                         <Link className="head-link" to='/'>Home</Link>
                         <Link className="head-link" to='/info'>Info</Link>
                         <Link className="head-link" to='/donation'>Donation</Link>
-                        <Link className="head-link" to='/login'>{name}</Link>
-                        <button onClick={this.logout}>Logout</button>
+                        <Link className="head-link" to='/mypage'>MyPage</Link>
+                        <button className="head-link head-button" onClick={this.logout}>Logout</button>
                     </div>
                 </div>
             )

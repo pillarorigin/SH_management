@@ -20,18 +20,19 @@ const readPromotion = (req, res) => {
 
 //홍보게시판 게시글 쓰기
 const insertPromotion = (req, res) => {
-    let board_idx = req.body.board_idx;
     let title = req.body.title;
     let writer = req.body.writer;   
     let imgPath = req.file.path;
-    let group_name = req.body.group_name;
-    let content = req.body.content;
-    let accounts_number = req.body.accounts_number; 
-    let date = new Date();
+    let filePath = imgPath.substring(7);
+    filePath = "http://localhost:4000/" + filePath
+    let slogan = req.body.slogan;
+    let detail = req.body.detail;
+    let accountNumber = req.body.accountNumber;
 
-    let sql = `insert into board values(?, ?, ?, ?, ?, ?, ?, ?)`;
-    pool.query(sql, [board_idx, title, writer, imgPath, group_name, content, accounts_number, date], function (err, rows) {
-        if (!err) {
+    let sql = `insert into board values(?, ?, ?, ?, ?, ?)`;
+    pool.query(sql, [title, writer, filePath, slogan, detail, accountNumber] , function (err, rows){
+        if(!err){
+
             //res.json({result:"success"});
             res.json({
                 "result": rows

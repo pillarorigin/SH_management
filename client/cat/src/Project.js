@@ -8,6 +8,8 @@ import Donation from './content/Donation';
 import Transaction from './content/Transaction';
 import Login from './content/Login';
 import Sign from './content/Sign';
+import Mypage from './content/Mypage';
+import Errorpage from './Errorpage';
 
 export default class Project extends Component{
     state={
@@ -34,6 +36,8 @@ loginState = () =>{
                 {/* <Route path = '/login' component={Login} />*/}
                 <Route path="/login" component={() => <Login loginState={this.loginState}/>}/>
                 <Route path = '/sign' component={Sign} />
+                <Route path='/mypage' component={Mypage} />
+                <Route component={Errorpage} />
             </Switch>
             </BrowserRouter>
         )

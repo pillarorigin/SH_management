@@ -68,12 +68,57 @@ class Login extends Component {
                 console.log(error)
             })
     }
+    test = ()=>{
+        const name = JSON.parse(localStorage.getItem('userId'));
+        console.log(name)
+        const url = `http://localhost:4000/users/${name}`;
+        const data = {
+            userId: this.state.userId,
+            password: this.state.password
+        }
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
 
+        Axios.post(url, data, config)
+            .then((response) => {
+                console.log("요청함", Axios.url);
+                if (response.data.result === "NoId") {
+                    return (
+                        alert("아이디가 존재하지 않습니다")
+                    )
+                } else if (response.data.result === "NoPw") {
+                    return (
+                        alert("비밀번호가 틀렸습니다")
+                    )
+                } else if (response.data.result === "success") {
+                    console.log(response.data.session)
+                    localStorage.setItem('userId', JSON.stringify(response.data.session));
+                    // var loginData = {
+                    //     LoggedIn: true,
+                    //     uername : JSON.stringify(response.data.session)
+                    // }
+                    // sessionStorage.setItem('key',JSON.stringify(loginData));
+                    this.props.loginState()
+
+                    // window.location.reload(false)
+                    this.props.history.push('/');
+                    // window.location.href = '/';
+                }
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+    }
 
 
     render() {
         
-
+        // if(!localStorage.getItem('userId')){
         return (
            
             <div>
@@ -94,9 +139,18 @@ class Login extends Component {
                     
                 </form>
                 <button type="button" onClick={this.login}>로그인</button>
+                <button type="button" onClick={this.test}>test</button>
                 <button><Link to='/sign'>회원가입</Link></button>
             </div>
         )
+    // }
+    //     else{
+    //         return(
+    //         <div>
+    //             <h1>잘못된 접근입니다</h1>
+    //         </div>
+    //         )
+    //     }
     }
 }
 export default withRouter(Login);
