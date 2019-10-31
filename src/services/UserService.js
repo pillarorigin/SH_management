@@ -80,7 +80,7 @@ const createGroupUser = (req, res) => {
     let accountNumber = req.body.accountNumber;
     let imgPath = req.file.path;
     let filePath = imgPath.substring(7);
-    filePath = "localhost:4000/" + filePath
+    filePath = "http://localhost:4000/" + filePath
     let role = "group";
     let date = new Date();
 
@@ -133,8 +133,8 @@ const logoutUser = (req, res)=>{
             res.json({ result: "logout" })
         }
     })
-
 }
+
 
 
 module.exports = {
