@@ -84,7 +84,7 @@ const createGroupUser = (req, res) => {
     let role = "group";
     let date = new Date();
 
-    let sql = `insert into users (userId, name, password, slogan, detail, imgPath, account_number, role, date ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`
+    let sql = `insert into users (userId, name, password, slogan, detail, img_path, account_number, role, date ) values(?, ?, ?, ?, ?, ?, ?, ?, ?);`
     pool.query(sql, [userId, name, password, slogan, detail, filePath, accountNumber, role, date ], function (err, rows) {
         if (!err) {
             res.json({ result: "success" })
