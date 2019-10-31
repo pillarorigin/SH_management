@@ -24,12 +24,14 @@ const insertPromotion = (req, res) => {
     let title = req.body.title;
     let writer = req.body.writer;   //필요 x 
     let imgPath = req.file.path;
+    let filePath = imgPath.substring(7);
+    filePath = "http://localhost:4000/" + filePath
     let slogan = req.body.slogan;
     let detail = req.body.detail;
     let accountNumber = req.body.accountNumber; //필요 x 
 
     let sql = `insert into board values(?, ?, ?, ?, ?, ?, ?)`;
-    pool.query(sql, [idx, title, writer, imgPath, slogan, detail, accountNumber] , function (err, rows){
+    pool.query(sql, [idx, title, writer, filePath, slogan, detail, accountNumber] , function (err, rows){
         if(!err){
             //res.json({result:"success"});
             res.json({
