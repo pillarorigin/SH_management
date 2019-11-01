@@ -108,7 +108,6 @@ const pagingPromotion = (req, res) => {
             });
         }
     })
-    
 }
 
 module.exports = {
