@@ -577,6 +577,13 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+express-route-validator@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/express-route-validator/-/express-route-validator-0.2.5.tgz#9fae49cc6e5596320118447d93267d408bc30b44"
+  integrity sha1-n65JzG5VljIBGER9kyZ9QIvDC0Q=
+  dependencies:
+    validator "~3.41.2"
+
 express-session@^1.17.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/express-session/-/express-session-1.17.0.tgz#9b50dbb5e8a03c3537368138f072736150b7f9b3"
@@ -2246,6 +2253,11 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+
+validator@~3.41.2:
+  version "3.41.3"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-3.41.3.tgz#bd214a4f7372db32ba78b899525f5f91adb3d217"
+  integrity sha1-vSFKT3Ny2zK6eLiZUl9fka2z0hc=
 
 vary@^1, vary@~1.1.2:
   version "1.1.2"

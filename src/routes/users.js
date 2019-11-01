@@ -10,14 +10,16 @@ const router = Router();
 
 // 파일 저장 위치와 파일 이름 설정
 const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        if(file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png"){
+    destination: function(req, images, cb){
+        if(images.mimetype == "image/jpeg" || images.mimetype == "image/jpg" || images.mimetype == "image/png"){
             console.log("이미지 파일 체크 완료");
             cb(null, 'public/images')
+        }else{
+            console.log("error 밯생?")
         }
     },
-    filename: function(req, file, cb){
-        cb(null, Date.now() + "-" + file.originalname)
+    filename: function(req, images, cb){
+        cb(null, Date.now() + "-" + images.originalname)
     }
 })
 
@@ -32,4 +34,5 @@ router.post('/register', upload.single('images') ,UserService.createGroupUser);
 router.post('/login', UserService.loginUser)
 
 
-module.exports = router;
+module.exports = router, upload;
+
