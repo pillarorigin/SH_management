@@ -43,7 +43,7 @@ class GroupSign extends Component {
         }        
          axios.post('http://localhost:4000/users/register', data , config)
          .then ((response)=>{
-             console.log("요청함",response.statusText);
+             console.log("요청함",response);
              if(response.data.result === "fail"){
                 console.log(response);
                  return(
@@ -74,23 +74,23 @@ class GroupSign extends Component {
             name = 'userid'
             />
             <input placeholder="password"
-            passwvalueord = {this.state.password}
+            value = {this.state.password}
             onChange={this.handleChange}
             name = 'password'
             />
 
             <input placeholder="slogan"
-            passwvalueord = {this.state.slogan}
+            value = {this.state.slogan}
             onChange={this.handleChange}
             name = 'slogan'
             />
             <input placeholder="detail"
-            passwvalueord = {this.state.detail}
+            value = {this.state.detail}
             onChange={this.handleChange}
             name = 'detail'
             />
             <input placeholder="accountNumber"
-            passwvalueord = {this.state.accountNumber}
+            value = {this.state.accountNumber}
             onChange={this.handleChange}
             name = 'accountNumber'
             />
