@@ -39,6 +39,7 @@ router.post('/page/:page', routeValidator.validate({
     }
 }), PromotionService.pagingPromotion);
 
+
 router.get('/create_board', function (req, res) {
     //session (권한이 있는 사용자인지 확인)
     if (!session.isOwner(req, res)) {
