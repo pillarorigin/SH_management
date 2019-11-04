@@ -31,7 +31,7 @@ export default class Transaction extends Component {
             date: new Date
         })
             .then(
-                (err) => { console.log(err) }
+                (c) => { console.log(c) }
             )
             .catch(
                 (error) => { console.log(error) }
