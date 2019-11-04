@@ -16,12 +16,12 @@ contract History {
   bytes32[] historyArray; //사용내역 배열
   bytes32[] dateArray; //날짜 배열
 
-  bytes32[] nameResult;
-  bytes32[] groupResult;
-  bytes32[] accountNumResult;
-  uint16[] accountsResult;
-  bytes32[] historyResult;
-  bytes32[] dateResult;
+  // bytes32[] nameResult;
+  // bytes32[] groupResult;
+  // bytes32[] accountNumResult;
+  // uint16[] accountsResult;
+  // bytes32[] historyResult;
+  // bytes32[] dateResult;
 
   //send()
   function transfer(bytes32 _name, bytes32 _groupName, bytes32 _accountNumber, uint16 _accounts, bytes32 _useHistory, bytes32 _date) public {
@@ -39,27 +39,27 @@ contract History {
     dateArray.push(date);
   }
 
-  function search(bytes32 _name) public returns (bytes32[] memory, bytes32[] memory, bytes32[] memory, uint16[] memory, bytes32[] memory, bytes32[] memory){
-    delete nameResult;
-    delete groupResult;
-    delete accountNumResult;
-    delete accountsResult;
-    delete historyResult;
-    delete dateResult;
+  // function search(bytes32 _name) public returns (bytes32[] memory, bytes32[] memory, bytes32[] memory, uint16[] memory, bytes32[] memory, bytes32[] memory){
+  //   delete nameResult;
+  //   delete groupResult;
+  //   delete accountNumResult;
+  //   delete accountsResult;
+  //   delete historyResult;
+  //   delete dateResult;
 
-    for(uint i=0; i<nameArray.length; i++){
-      if(_name == nameArray[i]){
-        nameResult.push(nameArray[i]);    
-        groupResult.push(groupArray[i]);
-        accountNumResult.push(accountNumArray[i]);
-        accountsResult.push(accountsArray[i]);
-        historyResult.push(historyArray[i]);
-        dateResult.push(dateArray[i]);
-      }
-    }
-    return (nameResult, groupResult, accountNumResult, accountsResult, historyResult, dateResult);
+  //   for(uint i=0; i<nameArray.length; i++){
+  //     if(_name == nameArray[i]){
+  //       nameResult.push(nameArray[i]);    
+  //       groupResult.push(groupArray[i]);
+  //       accountNumResult.push(accountNumArray[i]);
+  //       accountsResult.push(accountsArray[i]);
+  //       historyResult.push(historyArray[i]);
+  //       dateResult.push(dateArray[i]);
+  //     }
+  //   }
+  //   return (nameResult, groupResult, accountNumResult, accountsResult, historyResult, dateResult);
 
-  }
+  // }
 
   //call()
   function get() view public returns (bytes32[] memory, bytes32[] memory, bytes32[] memory, uint16[] memory, bytes32[] memory, bytes32[] memory) {
