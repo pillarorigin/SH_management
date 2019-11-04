@@ -70,33 +70,33 @@ class GroupSign extends Component {
                 <div className="Group-form">
                     <h1>그룹 회원가입</h1>
                     <form >
-                        <input placeholder="name"
+                        <input placeholder="이름"
                             value={this.state.name}
                             onChange={this.handleChange}
                             name='name'
                         />
-                        <input placeholder="userid"
+                        <input placeholder="아이디"
                             value={this.state.userid}
                             onChange={this.handleChange}
                             name='userid'
                         />
-                        <input placeholder="password"
+                        <input placeholder="비밀번호"
                             value={this.state.password}
                             onChange={this.handleChange}
                             name='password'
                         />
 
-                        <input placeholder="slogan"
+                        <input placeholder="슬로건"
                             value={this.state.slogan}
                             onChange={this.handleChange}
                             name='slogan'
                         />
-                        <input placeholder="detail"
+                        <input placeholder="소개"
                             value={this.state.detail}
                             onChange={this.handleChange}
                             name='detail'
                         />
-                        <input placeholder="accountNumber"
+                        <input placeholder="계좌번호"
                             value={this.state.accountNumber}
                             onChange={this.handleChange}
                             name='accountNumber'

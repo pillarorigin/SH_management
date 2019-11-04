@@ -116,7 +116,7 @@ class Login extends Component {
             return (
                 <div className="loginpage">
                     <div className='login'>
-                        <h1>Login</h1>
+                        <h1>로그인</h1>
                         <form id='form-style'>
                             <input
                                 placeholder="아이디"
@@ -132,8 +132,8 @@ class Login extends Component {
                                 name="password" />
 
                         </form>
-                        <button className="form-button" type="button" onClick={this.login}>로그인</button>
-                        <button className="form-button"><Link to='/sign' id="Link">회원가입</Link></button>
+                        <button className="form-button left" type="button" onClick={this.login}>로그인</button>
+                        <button className="form-button right"><Link to='/sign' id="Link">회원가입</Link></button>
                     </div>
                 </div>
             )

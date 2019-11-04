@@ -12,8 +12,10 @@ export default class Mypage extends Component{
                 let accountsArray = result.accounts;
                 let historyArray = result.history;
                 let dateArray = result.dateArray;    
-            }
-
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
         
     }
     
