@@ -1,0 +1,22 @@
+.Group-sign{
+    position: relative;
+    height: 829px;
+}
+.Group-form{
+    position: absolute;
+    border: 1px solid black;
+    text-align: center;
+    margin: 0px auto;
+    width: 300px;
+    height: 300px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-100%);
+}
+
+.Group-form input{
+    border-style: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    display: inline-block;
+}

@@ -1,71 +1,118 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 import axios from 'axios';
+import './GroupSign.css';
 
-export default class GroupSign extends Component {
-    state={
-        name:'',
-        userid:'',
-        password:''
-      
+class GroupSign extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            userid: '',
+            password: '',
+            slogan: '',
+            detail: '',
+            accountNumber: '',
+            images: null
+        }
     }
 
     handleChange = (e) => {
         this.setState({
-          [e.target.name]: e.target.value
+            [e.target.name]: e.target.value
         })
-     }
-     handleClick = () =>{
-         alert("name : "+this.state.name+ " userid : "+this.state.userid+" password : "+this.state.password)
-         console.log("click",this.state)
-         axios.post('http://localhost:4000/users',{
-             name: this.state.name,
-             userId: this. state.userid,
-             password: this.state.password
-         })
-         .then ((response)=>{
-             console.log("요청함",response);
-             if(response.data.result === "fail"){
-                 return(
-                     alert("실패하였습니다")
-                 )
-             }
-         })
-         .catch((error)=>{
-             console.log(error);
-         })
-     }
+    }
+    imageUpload = (e) => {
+        console.log(e.target.files[0])
+        this.setState({
+            images: e.target.files[0]
+        })
+    }
+    handleClick = () => {
+        let data = new FormData()
+        data.append('name', this.state.name);
+        data.append('password', this.state.password);
+        data.append('userId', this.state.name);
+        data.append('images', this.state.images);
+        data.append('slogan', this.state.slogan);
+        data.append('detail', this.state.detail);
+        data.append('accountNumber', this.state.accountNumber);
+        for (let e of data.entries()) {
+            console.log(`key : ${e[0]}, value : ${e[1]}`)
+        }
+        const config = {
+            header: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+        axios.post('http://localhost:4000/users/register', data, config)
+            .then((response) => {
+                console.log("요청함", response);
+                if (response.data.result == "fail") {
+                    console.log(response);
+                    return (
+                        alert("실패하였습니다")
+                    )
+                }else{
+                    this.props.history.push('/Login')
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     render() {
-        
+
 
         return (
-            <div>
-                <h1>그룹 회원가입</h1>
-            <form >
-            <input placeholder="name"
-            value ={this.state.name}
-            onChange={this.handleChange}
-            name = 'name'
-            />
-            <input placeholder="userid"
-            value = {this.state.userid}
-            onChange={this.handleChange}
-            name = 'userid'
-            />
-            <input placeholder="password"
-            passwvalueord = {this.state.password}
-            onChange={this.handleChange}
-            name = 'password'
-            />
-            
-            <div>{this.state.name}</div>
-            <div>{this.state.userid}</div>
-            <div>{this.state.password}</div>
-        </form>
-        <button onClick = {this.handleClick}>
-                Click
-            </button>
+            <div className="Group-sign">
+                <div className="Group-form">
+                    <h1>그룹 회원가입</h1>
+                    <form >
+                        <input placeholder="name"
+                            value={this.state.name}
+                            onChange={this.handleChange}
+                            name='name'
+                        />
+                        <input placeholder="userid"
+                            value={this.state.userid}
+                            onChange={this.handleChange}
+                            name='userid'
+                        />
+                        <input placeholder="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                            name='password'
+                        />
+
+                        <input placeholder="slogan"
+                            value={this.state.slogan}
+                            onChange={this.handleChange}
+                            name='slogan'
+                        />
+                        <input placeholder="detail"
+                            value={this.state.detail}
+                            onChange={this.handleChange}
+                            name='detail'
+                        />
+                        <input placeholder="accountNumber"
+                            value={this.state.accountNumber}
+                            onChange={this.handleChange}
+                            name='accountNumber'
+                        />
+                        <input type='file'
+                            ref={this.fileInput}
+                            onChange={this.imageUpload}
+                            name='images' />
+                    </form>
+                    <button onClick={this.handleClick}>
+                        회원가입
+                    </button>
+                </div>
             </div>
         )
     }
 }
+
+export default withRouter (GroupSign);

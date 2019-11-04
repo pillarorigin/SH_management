@@ -65,6 +65,9 @@ const readUser = (req, res) =>{
 }
 
 const createGroupUser = (req, res) => {
+    
+    console.log(req.file)
+    console.log(req.body.userId)
     let userId = req.body.userId;
     let name = req.body.name;
     let password = req.body.password;
@@ -72,6 +75,7 @@ const createGroupUser = (req, res) => {
     let detail = req.body.detail;
     let accountNumber = req.body.accountNumber;
     let imgPath = req.file.path;
+    console.log(imgPath)
     let filePath = imgPath.substring(7);
     filePath = "http://localhost:4000/" + filePath
     let role = "group";
