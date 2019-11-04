@@ -1,7 +1,7 @@
 module.exports = {
     host : 'localhost',
     user : 'root',
-    password : 'forest',
+    password : 'mysql',
     port : 3306,
     database : 'sh_manage'
 };
