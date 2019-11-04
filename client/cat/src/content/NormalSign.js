@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 import axios from 'axios';
 
-export default class NormalSign extends Component {
-    state={
+ class NormalSign extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            
         name:'',
         userid:'',
         password:''
       
-    }
 
+        }
+    }
     handleChange = (e) => {
         this.setState({
           [e.target.name]: e.target.value
         })
      }
      handleClick = () =>{
-         alert("name"+this.state.name+ "userid"+this.state.userid+"password"+this.state.password)
          console.log("click",this.state)
          axios.post('http://localhost:4000/users',{
              name: this.state.name,
@@ -24,7 +28,9 @@ export default class NormalSign extends Component {
          })
          .then ((response)=>{
              console.log("요청함",response);
-             if(response.data.result === "fail"){
+             if(response.data.result =='success'){
+                this.props.history.push('/Login');
+             } else if(response.data.result == "fail"){
                  return(
                      alert("실패하였습니다")
                  )
@@ -68,3 +74,4 @@ export default class NormalSign extends Component {
         )
     }
 }
+export default withRouter(NormalSign);

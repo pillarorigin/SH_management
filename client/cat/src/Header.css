@@ -1,6 +1,5 @@
 .head-button{
     border-style: none;
-    
 }
 
 
@@ -13,8 +12,10 @@
     color: black;
     text-decoration: none;
     transition: background-color 0.4s;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 10px;
+    width: 75px;
+    text-align: center;
     
 }
 

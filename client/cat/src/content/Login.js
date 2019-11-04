@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import Axios from 'axios';
+import './Login.css'
 
 class Login extends Component {
     constructor(props) {
@@ -8,15 +9,10 @@ class Login extends Component {
         this.state = {
             userId: '',
             password: '',
-            login:'false'
+            login: 'false'
 
         }
     }
-    // state = {
-    //     userId: '',
-    //     password: '',
-    //     loginOk: ''
-    // }
 
     handleChange = (e) => {
         this.setState({
@@ -68,7 +64,7 @@ class Login extends Component {
                 console.log(error)
             })
     }
-    test = ()=>{
+    test = () => {
         const name = JSON.parse(localStorage.getItem('userId'));
         console.log(name)
         const url = `http://localhost:4000/users/${name}`;
@@ -102,10 +98,8 @@ class Login extends Component {
                     // }
                     // sessionStorage.setItem('key',JSON.stringify(loginData));
                     this.props.loginState()
-
-                    // window.location.reload(false)
                     this.props.history.push('/');
-                    // window.location.href = '/';
+
                 }
 
             })
@@ -117,40 +111,40 @@ class Login extends Component {
 
 
     render() {
-        
-        // if(!localStorage.getItem('userId')){
-        return (
-           
-            <div>
-                <h1>Login</h1>
-                <form>
-                    <input
-                        placeholder="아이디"
-                        type="text"
-                        value={this.state.name}
-                        onChange={this.handleChange}
-                        name="userId" />
-                    <input
-                        placeholder="비밀번호"
-                        type="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                        name="password" />
-                    
-                </form>
-                <button type="button" onClick={this.login}>로그인</button>
-                <button type="button" onClick={this.test}>test</button>
-                <button><Link to='/sign'>회원가입</Link></button>
-            </div>
-        )
-    // }
-    //     else{
-    //         return(
-    //         <div>
-    //             <h1>잘못된 접근입니다</h1>
-    //         </div>
-    //         )
-    //     }
+
+        if (!localStorage.getItem('userId')) {
+            return (
+                <div className="loginpage">
+                    <div className='login'>
+                        <h1>Login</h1>
+                        <form id='form-style'>
+                            <input
+                                placeholder="아이디"
+                                type="text"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                                name="userId" />
+                            <input
+                                placeholder="비밀번호"
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                name="password" />
+
+                        </form>
+                        <button className="form-button" type="button" onClick={this.login}>로그인</button>
+                        <button className="form-button"><Link to='/sign' id="Link">회원가입</Link></button>
+                    </div>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h1>잘못된 접근입니다</h1>
+                </div>
+            )
+        }
     }
 }
 export default withRouter(Login);

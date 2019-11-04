@@ -35,7 +35,7 @@ loginState = () =>{
                 <Route path = '/donation' component={Donation} />
                 <Route path = '/transaction' component={Transaction} />
                 {/* <Route path = '/login' component={Login} />*/}
-                <Route path="/login" component={() => <Login loginState={this.loginState}/>}/>
+                <Route path='/login' component={() => <Login loginState={this.loginState}/>}/>
                 <Route path = '/sign' component={Sign} />
                 <Route path='/mypage' component={Mypage} />
                 <Route component={Errorpage} />

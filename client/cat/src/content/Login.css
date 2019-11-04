@@ -1,0 +1,47 @@
+.loginpage {
+    position: relative;
+    height: 829px;
+}
+.login{
+    border : 1px solid black;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-100%);
+}
+.form-button{
+    margin-top:109px;
+    width:100px;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #fff;
+    border:1px solid black;
+}
+button:checked{
+    outline: none;
+}
+
+
+#Link{
+    text-decoration: none;
+    color: black;
+}
+#form-style{
+    margin-top:50px;
+}
+#form-style input {
+    border-style: none;
+    border-bottom: 1px solid black;
+    margin-top:5px ;
+    width: 200px;
+    height: 30px;
+    transition: width 0.4s;
+}
+#form-style input:focus{
+    width:250px;
+    text-align: center;
+    outline: none;
+}
