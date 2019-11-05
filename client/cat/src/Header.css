@@ -2,7 +2,6 @@
     border-style: none;
 }
 
-
 .head-link{
     margin: 5px;
     background-color: #fff;
@@ -16,7 +15,6 @@
     font-weight: 10px;
     width: 75px;
     text-align: center;
-    
 }
 
 .head-link:hover{
@@ -26,5 +24,6 @@
 }
 
 .head-div{
-    background-color: #008CBA;
+    background-color: rgb(204, 204, 204);
+    
 }
