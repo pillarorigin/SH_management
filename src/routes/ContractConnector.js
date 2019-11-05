@@ -42,8 +42,8 @@ router.get('/', async function (req, res) {
                 resultArray.name = ethers.utils.parseBytes32String(contract_info.name[i]);
                 resultArray.group = ethers.utils.parseBytes32String(contract_info.groupName[i]);
                 resultArray.accountNum = ethers.utils.parseBytes32String(contract_info.accountNumber[i]);
-                resultArray.accounts = ethers.utils.parseBytes32String(contract_info.accouns[i]);
-                resultArray.history = ethers.utils.parseBytes32String(contract_info.history[i]);
+                resultArray.accounts = contract_info.accounts[i];
+                resultArray.history = ethers.utils.parseBytes32String(contract_info.useHistory[i]);
                 resultArray.date = ethers.utils.parseBytes32String(contract_info.date[i])
                 resultList.push(resultArray);
             }
@@ -59,12 +59,7 @@ router.get('/', async function (req, res) {
 
         //ethers.utils.parseBytes32String
         res.json({
-            name: nameResult,
-            group: groupResult,
-            accountNum: accountNumResult,
-            accounts: accountsResult,
-            history: historyResult,
-            date: dateResult
+            result: resultList
         }); //{key:value} 형식으로 하면 객체 불러오는 쪽에서 key.value로 데이터 가져오기 가능
 
     } catch (err) {
