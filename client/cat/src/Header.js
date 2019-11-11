@@ -37,9 +37,9 @@ class Header extends Component {
                 <div>
                     <div className="head-div">
                         <ButtonGroup>
-                    <Button outline color="secondary"><Link style={{color:"black"}} to='/'>Home</Link></Button>
-                    <Button outline color="secondary"><Link style={{color:"black"}} to='/info'>Info</Link></Button>
-                    <Button outline color="secondary"><Link style={{color:"black"}} to='/donation'>Donation</Link></Button>
+                    <Button outline color="secondary"><Link className="Link-style" style={{color:"black"}} to='/'>Home</Link></Button>
+                    <Button outline color="secondary"><Link className="Link-style" style={{color:"black"}} to='/info'>Info</Link></Button>
+                    <Button outline color="secondary"><Link className="Link-style" style={{color:"black"}} to='/donation'>Donation</Link></Button>
                         {/* <Link className="head-link" to='/mypage' onClick={this.list}>MyPage</Link> */}
                         <Button onClick={this.list}>MyPage</Button>
                         <Button onClick={this.logout}>Logout</Button>
@@ -52,11 +52,11 @@ class Header extends Component {
                 <div>
                     <div className="head-div">
                     <ButtonGroup>
-                        <Button outline color="secondary"> <Link style={{color:'black'}} to='/'>Home</Link> </Button>
-                        <Button outline color="secondary"> <Link style={{color:'black'}} to='/info'>Info</Link></Button>
-                        <Button outline color="secondary"> <Link style={{color:'black'}} to='/donation'>Donation</Link></Button>
-                        <Button outline color="secondary"> <Link style={{color:'black'}} to='/login'>Login</Link></Button>
-                        <Button outline color="secondary"> <Link style={{color:'black'}} to='/sign'>Sign</Link></Button>
+                        <Button outline color="secondary"> <Link className="Link-style" style={{color:'black'}} to='/'>Home</Link> </Button>
+                        <Button outline color="secondary"> <Link className="Link-style" style={{color:'black'}} to='/info'>Info</Link></Button>
+                        <Button outline color="secondary"> <Link className="Link-style" style={{color:'black'}} to='/donation'>Donation</Link></Button>
+                        <Button outline color="secondary"> <Link className="Link-style" style={{color:'black'}} to='/login'>Login</Link></Button>
+                        <Button outline color="secondary"> <Link className="Link-style" style={{color:'black'}} to='/sign'>Sign</Link></Button>
                         </ButtonGroup>
                     </div>
                 </div>

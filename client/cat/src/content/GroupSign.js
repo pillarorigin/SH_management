@@ -32,7 +32,7 @@ class GroupSign extends Component {
         let data = new FormData()
         data.append('name', this.state.name);
         data.append('password', this.state.password);
-        data.append('userId', this.state.name);
+        data.append('userId', this.state.userid);
         data.append('images', this.state.images);
         data.append('slogan', this.state.slogan);
         data.append('detail', this.state.detail);
