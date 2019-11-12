@@ -9,7 +9,6 @@
     text-align: center;
     margin: 0px auto;
     width: 300px;
-    height: 400px;
     left: 50%;
     top: 50%;
     
@@ -30,4 +29,7 @@
 .Group-form input:focus{
     width: 250px;
     text-align: center;
+}
+.area{
+    margin-top: 5px;
 }
