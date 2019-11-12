@@ -13,6 +13,7 @@ const readPromotion = (req, res) => {
         if (!err) {
             res.json({ "result": rows })
         } else {
+            console.log(err);
             res.json({ result: "fail" });
         }
     })
