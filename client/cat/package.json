@@ -9,6 +9,7 @@
     "react": "^16.11.0",
     "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.11.0",
+    "react-grid-system": "^6.0.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-strap": "0.0.1",
