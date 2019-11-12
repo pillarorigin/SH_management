@@ -4,6 +4,7 @@
 }
 .login{
     border : 1px solid black;
+    border-radius: 12px;
     text-align: center;
     width: 300px;
     height: 300px;
@@ -19,6 +20,11 @@
     text-decoration: none;
     background-color: #fff;
     border:1px solid black;
+    
+}
+.form-button:hover{
+    background-color: #000000;
+    color: #fff;
 }
 button:checked{
     outline: none;
@@ -28,6 +34,10 @@ button:checked{
 #Link{
     text-decoration: none;
     color: black;
+}
+#Link:hover{
+    
+    color: #ffffff;
 }
 #form-style{
     margin-top:50px;
@@ -44,4 +54,14 @@ button:checked{
     width:250px;
     text-align: center;
     outline: none;
+}
+
+.left{
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.right{
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }

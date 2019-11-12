@@ -30,25 +30,22 @@ router.get('/', async function (req, res) {
             useHistory: raw_info[4],
             date: raw_info[5]
         };
-        nameResult = [];
-        groupResult = [];
-        accountNumResult = [];
-        accountsResult = [];
-        historyResult = [];
-        dateResult = [];
-
+        let resultList = [];
+        let resultArray = {};
         for (let i = 0; i < contract_info.date.length; i++) {
             if (ethers.utils.parseBytes32String(contract_info.groupName[i]) != group) {
                 //console.log(ethers.utils.parseBytes32String(contract_info.groupName[i]));
                 //console.log(group);
                 //console.log("다르다 체크");
             } else {
-                nameResult.push(ethers.utils.parseBytes32String(contract_info.name[i]));
-                groupResult.push(ethers.utils.parseBytes32String(contract_info.groupName[i]));
-                accountNumResult.push(ethers.utils.parseBytes32String(contract_info.accountNumber[i]));
-                accountsResult.push(contract_info.accounts[i]);
-                historyResult.push(ethers.utils.parseBytes32String(contract_info.useHistory[i]));
-                dateResult.push(ethers.utils.parseBytes32String(contract_info.date[i]));
+                resultArray = {};    
+                resultArray.name = ethers.utils.parseBytes32String(contract_info.name[i]);
+                resultArray.group = ethers.utils.parseBytes32String(contract_info.groupName[i]);
+                resultArray.accountNum = ethers.utils.parseBytes32String(contract_info.accountNumber[i]);
+                resultArray.accounts = contract_info.accounts[i];
+                resultArray.history = ethers.utils.parseBytes32String(contract_info.useHistory[i]);
+                resultArray.date = ethers.utils.parseBytes32String(contract_info.date[i])
+                resultList.push(resultArray);
             }
 
             if (i === contract_info.date.length) {
@@ -62,12 +59,7 @@ router.get('/', async function (req, res) {
 
         //ethers.utils.parseBytes32String
         res.json({
-            name: nameResult,
-            group: groupResult,
-            accountNum: accountNumResult,
-            accounts: accountsResult,
-            history: historyResult,
-            date: dateResult
+            result: resultList
         }); //{key:value} 형식으로 하면 객체 불러오는 쪽에서 key.value로 데이터 가져오기 가능
 
     } catch (err) {

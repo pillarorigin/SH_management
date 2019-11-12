@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import Axios from 'axios'
+import React, { Component } from 'react';
+import Axios from 'axios';
+import './Transaction.css';
 //import History from '../../build/contracts/History.json'
 
 export default class Transaction extends Component {
@@ -40,22 +41,18 @@ export default class Transaction extends Component {
     render() {
         return (
             <div>
-                <h1>Transaction</h1>
-                <form >
-                    <p>이름</p>
-                    <input type="text" value={this.state.name} onChange={this.handleChange} name='name' />
-                    <p>동아리명</p>
-                    <input type="text" value={this.state.groupName} onChange={this.handleChange} name='groupName' />
-                    <p>계좌번호</p>
-                    <input type="text" value={this.state.accountNumber} onChange={this.handleChange} name='accountNumber' />
-                    <p>금액</p>
-                    <input type="text" value={this.state.accounts} onChange={this.handleChange} name='accounts' />
-                    <p>사용내역</p>
-                    <input type="text" value={this.state.useHistory} onChange={this.handleChange} name='useHistory' />
-                    <p>날짜</p>
-                    <input type="date" value={this.state.date} onChange={this.handleChange} name='date' />
+                
+                <form className="Tran-form">
+                <h1>등록하기</h1>
+                    <input placeholder="이름" className="Tran-input" type="text" value={this.state.name} onChange={this.handleChange} name='name' />
+                    <input placeholder="동아리명" className="Tran-input" type="text" value={this.state.groupName} onChange={this.handleChange} name='groupName' />
+                    <input placeholder="계좌번호" className="Tran-input" type="text" value={this.state.accountNumber} onChange={this.handleChange} name='accountNumber' />
+                    <input placeholder="금액" className="Tran-input" type="text" value={this.state.accounts} onChange={this.handleChange} name='accounts' />
+                    <input placeholder="사용내역" className="Tran-input" type="text" value={this.state.useHistory} onChange={this.handleChange} name='useHistory' />
+                    <input placeholder="날짜" className="Tran-input" type="date" value={this.state.date} onChange={this.handleChange} name='date' />
+                    <button onClick={this.TxTransfer}>등록</button>
                 </form>
-                <button onClick={this.TxTransfer}>등록</button>
+                
             </div>
         )
     }

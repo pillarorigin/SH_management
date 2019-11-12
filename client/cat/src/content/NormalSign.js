@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom'
 import axios from 'axios';
+import './NormalSign.css'
 
  class NormalSign extends Component {
     constructor(props){
@@ -45,23 +46,22 @@ import axios from 'axios';
         
 
         return (
-            <div>
+            <div className='Normal-login'>
+            <div className='Normal-div'>
                 <h1>일반 회원가입</h1>
-            <form >
-            <p>이름</p>
-            <input placeholder="name"
+            <form id='Normal-form'>
+            
+            <input placeholder="이름"
             value ={this.state.name}
             onChange={this.handleChange}
             name = 'name'
             />
-            <p>아이디</p>
-            <input placeholder="userid"
+            <input placeholder="아이디"
             value = {this.state.userid}
             onChange={this.handleChange}
             name = 'userid'
             />
-            <p>비밀번호</p>
-            <input placeholder="password"
+            <input placeholder="비밀번호"
             passwvalueord = {this.state.password}
             onChange={this.handleChange}
             name = 'password'
@@ -70,6 +70,7 @@ import axios from 'axios';
         <button onClick = {this.handleClick}>
                 회원가입
             </button>
+            </div>
             </div>
         )
     }
