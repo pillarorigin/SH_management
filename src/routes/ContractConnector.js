@@ -35,7 +35,6 @@ router.get('/', async function (req, res) {
         for (let i = 0; i < contract_info.date.length; i++) {
             if (ethers.utils.parseBytes32String(contract_info.groupName[i]) != group) {
                 //console.log(ethers.utils.parseBytes32String(contract_info.groupName[i]));
-                console.log(group);
                 console.log("다르다 체크");
             } else {
                 resultArray = {};    

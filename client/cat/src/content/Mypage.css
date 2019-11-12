@@ -1,0 +1,13 @@
+.donation{
+    color: #fff;
+}
+.donation:hover{
+    color:#fff;
+    text-decoration: none;
+}
+.btn-position{
+    float: right;
+}
+.MyImg{
+    width: 250px;
+}

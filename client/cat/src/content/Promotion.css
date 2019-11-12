@@ -1,0 +1,14 @@
+.CardMain{
+    border:2px solid rgb(204, 204, 204) !important;
+    width: 500px !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-35%);
+}
+.pro-btn{
+    float: right;
+}
+.pro-h1{
+    display: inline-block;
+}
