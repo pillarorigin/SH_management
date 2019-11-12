@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 import './GroupSign.css';
+import { NONCE_EXPIRED } from 'ethers/errors';
+
 
 class GroupSign extends Component {
     constructor(props) {
@@ -53,7 +55,7 @@ class GroupSign extends Component {
                     return (
                         alert("실패하였습니다")
                     )
-                }else{
+                } else {
                     this.props.history.push('/Login')
                 }
             })
@@ -63,6 +65,9 @@ class GroupSign extends Component {
     }
 
     render() {
+        const areaStyle ={
+            resize: 'none'
+        }
 
 
         return (
@@ -81,26 +86,34 @@ class GroupSign extends Component {
                             name='userid'
                         />
                         <input placeholder="비밀번호"
+                            type="password"
                             value={this.state.password}
                             onChange={this.handleChange}
                             name='password'
-                        />
-
-                        <input placeholder="슬로건"
-                            value={this.state.slogan}
-                            onChange={this.handleChange}
-                            name='slogan'
-                        />
-                        <input placeholder="소개"
-                            value={this.state.detail}
-                            onChange={this.handleChange}
-                            name='detail'
                         />
                         <input placeholder="계좌번호"
                             value={this.state.accountNumber}
                             onChange={this.handleChange}
                             name='accountNumber'
                         />
+                        <input placeholder="슬로건"
+                            value={this.state.slogan}
+                            onChange={this.handleChange}
+                            name='slogan'
+                        />
+                        {/* <input placeholder="소개"
+                           
+                            id="detail"
+                            type="textarea"
+                        /> */}
+                        <textarea
+                            style={areaStyle}
+                            cols='25' rows='2' placeholder='소개'
+                            value={this.state.detail}
+                            onChange={this.handleChange}
+                            name='detail' 
+                            className="area">
+                        </textarea>
                         <input type='file'
                             ref={this.fileInput}
                             onChange={this.imageUpload}
@@ -115,4 +128,4 @@ class GroupSign extends Component {
     }
 }
 
-export default withRouter (GroupSign);
+export default withRouter(GroupSign);
