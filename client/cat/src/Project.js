@@ -10,6 +10,7 @@ import Login from './content/Login';
 import Sign from './content/Sign';
 import Mypage from './content/Mypage';
 import Errorpage from './Errorpage';
+import Promtion from './content/Promotion';
 
 
 export default class Project extends Component{
@@ -38,6 +39,7 @@ loginState = () =>{
                 <Route path='/login' component={() => <Login loginState={this.loginState}/>}/>
                 <Route path = '/sign' component={Sign} />
                 <Route path='/mypage' component={Mypage} />
+                <Route path='/promotion' component={Promtion} />
                 <Route component={Errorpage} />
             </Switch>
             </BrowserRouter>
