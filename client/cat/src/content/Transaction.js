@@ -41,7 +41,6 @@ export default class Transaction extends Component {
     render() {
         return (
             <div>
-                
                 <form className="Tran-form">
                 <h1>등록하기</h1>
                     <input placeholder="이름" className="Tran-input" type="text" value={this.state.name} onChange={this.handleChange} name='name' />
@@ -52,8 +51,6 @@ export default class Transaction extends Component {
                     <input placeholder="날짜" className="Tran-input" type="date" value={this.state.date} onChange={this.handleChange} name='date' />
                     <button type="button" onClick={this.TxTransfer}>등록</button>
                 </form>
-                
-                
             </div>
         )
     }

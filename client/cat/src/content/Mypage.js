@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Table } from 'reactstrap';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Container, Row, Col } from 'react-grid-system';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+
 class Mypage extends Component {
     state = {
         contractList: []
@@ -45,32 +48,63 @@ class Mypage extends Component {
         const name = data.name;
         const img_path = data.img_path;
 
+        /*
+  <Container fluid style={{ lineHeight: '32px' }}>
+  <Row debug>
+    <Col debug>Logo (Flexible column)</Col>
+    <Col xs="content" debug> Menu with x-items</Col>
+  </Row>
+</Container>
+        */
         return (
             <div>
-                <div>
-                    <h1>환영합니다 {name}</h1>
-                    <img src={img_path}></img>
-                    <Link to='/transaction'>후원등록</Link>
-                </div>
-                <div>
-                    <Table striped>
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>후원자명</th>
-                                <th>동아리명</th>
-                                <th>계좌번호</th>
-                                <th>금액</th>
-                                <th>사용내역</th>
-                                <th>날짜</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.state.contractList}
-                        </tbody>
-                    </Table>
-                    
-                </div>
+                <Container fluid style={{ lineHeight: '32px' }}>
+                    <Row>
+                        <div>
+                            <Col xs={6}>
+                                <Card>
+                                    <CardBody>
+                                        <CardTitle>
+                                            <div>
+                                                <h3>환영합니다</h3>
+                                            </div>
+                                        </CardTitle>
+                                        <CardSubtitle>
+                                            <div>
+                                                {name}님
+                                            </div>
+                                        </CardSubtitle>
+                                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                                        <img src={img_path}></img>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </div>
+
+
+                        <div>
+                            <Col>
+                                <Table hover>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>후원자명</th>
+                                            <th>동아리명</th>
+                                            <th>계좌번호</th>
+                                            <th>금액</th>
+                                            <th>사용내역</th>
+                                            <th>날짜</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.contractList}
+                                    </tbody>
+                                </Table>
+                                <Link to='/transaction'>후원등록</Link>
+                            </Col>
+                        </div>
+                    </Row>
+                </Container>
             </div>
         )
     }
