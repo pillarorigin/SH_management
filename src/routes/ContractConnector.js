@@ -35,8 +35,8 @@ router.get('/', async function (req, res) {
         for (let i = 0; i < contract_info.date.length; i++) {
             if (ethers.utils.parseBytes32String(contract_info.groupName[i]) != group) {
                 //console.log(ethers.utils.parseBytes32String(contract_info.groupName[i]));
-                //console.log(group);
-                //console.log("다르다 체크");
+                console.log(group);
+                console.log("다르다 체크");
             } else {
                 resultArray = {};    
                 resultArray.name = ethers.utils.parseBytes32String(contract_info.name[i]);
@@ -49,7 +49,7 @@ router.get('/', async function (req, res) {
             }
 
             if (i === contract_info.date.length) {
-                //console.log("마지막 체크")
+                console.log("마지막 체크")
             } else if (contract_info.date[i] === contract_info.date[i + 1]) {
                 i++;
             } else {
@@ -69,8 +69,8 @@ router.get('/', async function (req, res) {
 
 router.post('/transfer', async function (req, res) {
     // to do (13시 30분 이후) role이 group인 session만 해당 기능 실행 가능하게 로직짜기
-
-    //console.log(req.body);
+    console.log("test125")
+    console.log(req.body);
     try {
         web3.setProvider(new Web3.providers.HttpProvider('http://localhost:7545')); //가나슈 네트워크 
         account = await web3.eth.getAccounts();

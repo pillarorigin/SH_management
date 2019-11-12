@@ -29,9 +29,9 @@ import './NormalSign.css'
          })
          .then ((response)=>{
              console.log("요청함",response);
-             if(response.data.result =='success'){
+             if(response.data.result ==='success'){
                 this.props.history.push('/Login');
-             } else if(response.data.result == "fail"){
+             } else if(response.data.result === "fail"){
                  return(
                      alert("실패하였습니다")
                  )
