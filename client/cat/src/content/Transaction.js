@@ -50,8 +50,9 @@ export default class Transaction extends Component {
                     <input placeholder="금액" className="Tran-input" type="text" value={this.state.accounts} onChange={this.handleChange} name='accounts' />
                     <input placeholder="사용내역" className="Tran-input" type="text" value={this.state.useHistory} onChange={this.handleChange} name='useHistory' />
                     <input placeholder="날짜" className="Tran-input" type="date" value={this.state.date} onChange={this.handleChange} name='date' />
-                    <button onClick={this.TxTransfer}>등록</button>
+                    <button type="button" onClick={this.TxTransfer}>등록</button>
                 </form>
+                
                 
             </div>
         )

@@ -50,7 +50,7 @@ class GroupSign extends Component {
         axios.post('http://localhost:4000/users/register', data, config)
             .then((response) => {
                 console.log("요청함", response);
-                if (response.data.result == "fail") {
+                if (response.data.result === "fail") {
                     console.log(response);
                     return (
                         alert("실패하였습니다")
